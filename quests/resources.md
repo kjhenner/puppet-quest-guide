@@ -73,8 +73,7 @@ in the same syntax you would use to declare a desired state.
 
 <div class = "lvm-task-number"><p>Task 1:</p></div>
 
-Use the `puppet resource` tool to take a look at your root user account. The
-syntax of the command is: *puppet resource \<type\> \<name\>*.
+Use the `puppet resource` tool to take a look at your root user account.
 
     puppet resource user root 
 	
