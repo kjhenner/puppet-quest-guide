@@ -25,12 +25,12 @@ virtualization software's documentation.)
 settings.  We recommend allocating 4GB of memory for the best performance. If
 you don't have enough memory on your host machine, you may leave the allocation
 at 3GB or lower it to 2GB, though you may encounter stability and performance
-issues. Set the *Network Adapter* to *Bridged*. Use an *Autodetect* setting if
-available, or accept the default Network Adapter name. (If you started the VM
-before making these changes, you may need to restart the VM before the settings
-will be applied correctly.) If you are unable to use a bridged network, we
-suggest using the port-forwarding instructions provided in the troubleshooting
-guide.
+issues. Set the *Network Adapter* to *Bridged*. (If you are unable to use
+a bridged adapter for technical or policy reasons, please refer to our
+[Troubleshooting Guide](https://github.com/puppetlabs/puppet-quest-guide/blob/master/troubleshooting.md))
+Use an *Autodetect* setting if available, or accept the default Network Adapter
+name. (If you started the VM before making these changes, you may need to
+restart the VM before the settings will be applied correctly.)
 
 1. Start the VM. When it is started, make a note of the IP address and password
 displayed on the splash page. Rather than logging in directly, we highly

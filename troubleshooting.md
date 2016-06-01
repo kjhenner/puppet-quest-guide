@@ -132,12 +132,18 @@ generally the quickest way to ensure that the network services are correctly
 reset. (Unfortunately restarting the network service directly isn't always
 reliable.)
 
+If you are unable to use the bridged adapter for technical or policy reasons,
+see the section below for instructions on setting up port-forwarding.
+
 Some network configurations may still prevent you from accessing the Learning
 VM. If this is the case, we recommend that you speak to your site network
 administrator to see if there are any firewall rules, proxies, or DHCP server
 setting that might be preventing you from accessing the VM.
 
-If networking continues to cause trouble, you can connect to the Learning VM
+### I can't use the bridged network adapter.
+
+If you cannot use the bridged network adapter or are unable to connect to the
+VM with the recommended settings, you can connect to the Learning VM
 via port forwarding. Change your VM's network adapter to NAT, and configure
 port forwarding as follows:
 
@@ -154,6 +160,14 @@ via ssh (`ssh -p 2222 root@localhost`) and access the Quest Guide and PE
 console by entering `http://localhost:8080` and `https://localhost:8443` in
 your browser address bar.
 
+Unfortunately port-forwarding doesn't work correctly in some versions of VMware
+Fusion. See [this blog post](http://blogs.vmware.com/teamfusion/2016/01/workaround-of-nat-port-forwarding-issue-in-fusion-8-1.html)
+for more information.
+
+### Agent Setup Task 13 fails behind a proxy
+
+Please see the HTTP proxy section of Docker's [documentation](https://docs.docker.com/engine/admin/systemd/).
+
 ### I can't scroll up in my terminal
 
 The Learning VM uses a tool called tmux to allow us to display the quest
@@ -167,7 +181,7 @@ You may try reducing the VM's processors to 1 and disabling the "I/O APIC"
 option in the system section of the settings menu. Be aware, however, that
 this might result in *very* slow start times for services in the PE stack.
 
-### Still need help?
+## Still need help?
 
 If your puppet runs still fail after trying the steps above, check the Puppet
 Enterprise [Known
