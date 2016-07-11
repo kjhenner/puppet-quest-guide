@@ -70,7 +70,7 @@
 }
 
 .book .book-summary ul.summary:before {
-    background-image: url('/assets/puppet-logo-amber-white-lg.png');
+    background-image: url('../assets/puppet-logo-amber-white-lg.png');
     background-size: 150px;
     display: inline-block;
     width: 199px;
