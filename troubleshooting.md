@@ -129,10 +129,12 @@ If your network connection has changed since you loaded the VM, it's possible
 that your IP address is different from that displayed on the Learning VM splash
 screen. Log in to the VM via the virtualization directly (rather than SSH) and
 use the `facter ipaddress` command the check the current address. If you
-continue to get an no IP address or an invalid IP address, restarting the VM is
-generally the quickest way to ensure that the network services are correctly
-reset. (Unfortunately restarting the network service directly isn't always
-reliable.)
+continue to get an no IP address or an invalid IP address, return to the
+network settings page and ensure that you have the correct adapter selected for
+the current network type. If you were plugged in and recently switched to a
+Wi-Fi network, for example, ensure that that adapter is selected and click
+**ok**. Once this is set, restarting the VM is generally the quickest way to
+ensure that the network services are correctly reset.
 
 Some network configurations may still prevent you from accessing the Learning
 VM. If this is the case, we recommend that you speak to your site network
