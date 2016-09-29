@@ -1,5 +1,3 @@
 {
-  "resources": {
-    "watch_list": ["/root/.bash_history"]
-  }
+  "puppetconf_demo": {}
 }

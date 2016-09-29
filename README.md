@@ -1,8 +1,12 @@
-# Stay spry
+# Introduction
 
-Getting out on the field without doing proper warm-ups is a great way to strain
-a hamstring. Our of concern for your health, we've put together a series of
-Puppet warmups to prevent cognitive injury as you exercise your Puppet muscles
-throughout the conference.
+Research shows that handling Puppet code witout proper warmups increases the
+risk of straining a digital hamstring.
+
+
+## Hone your Puppet skills
+
+We've put together a series of exercises to help you keep your Puppet skills
+sharp throughout the conference.
 
 Continue on to the next page to get started!
