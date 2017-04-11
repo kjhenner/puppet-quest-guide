@@ -19,15 +19,15 @@ Get an up-to-date version of your virtualization software. We suggest using
 either VirtualBox or a VMware application appropriate for your platform.
 [VirtualBox](https://www.virtualbox.org/wiki/Downloads) is free and available
 for Linux, OS X, and Windows. VMware has several desktop virtualization
-applications, including [VMWare
+applications, including [VMware
 Fusion](https://www.vmware.com/products/fusion/) for Mac and [VMware
 Workstation](https://www.vmware.com/products/workstation/) for Windows.
 
 The Learning VM's Open Virtualization Archive format must be *imported*
 rather than opened directly. Launch your virtualization software and find an
-option for *Import* or *Import Appliance*. (This will usually be in a *File*
-menu. If you cannot locate an *Import* option, please refer to your
-virtualization software's documentation.)
+option for **Import** or **Import Appliance**. This will usually be in a **File**
+menu. If you cannot locate an **Import** option, refer to your
+virtualization software's documentation.
 
 *Before* starting the VM for the first time, you will need to adjust its
 settings.  We recommend allocating 4GB of memory for the best performance. If
