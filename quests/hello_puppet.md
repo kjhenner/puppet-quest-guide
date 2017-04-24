@@ -152,7 +152,7 @@ Your credentials are:
 Now that you're connected to this system, copy and run the following command to
 load the agent installer from the master and run it on the agent system:
 
-    sudo curl -k https://learning.puppetlabs.vm:8140/packages/current/install.bash | bash
+    curl -k https://learning.puppetlabs.vm:8140/packages/current/install.bash | sudo bash
 
 You will see text stream across the screen as the installation runs.
 
