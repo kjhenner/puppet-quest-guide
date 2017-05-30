@@ -430,7 +430,7 @@ define pasture_app::app (
 
   class { 'pasture':
     sinatra_server => 'thin',
-    db             => "postgres:://${db_user}:${db_password}@${db_host}/${db_name}",
+    db             => "postgres://${db_user}:${db_password}@${db_host}/${db_name}",
   }
 
 }
