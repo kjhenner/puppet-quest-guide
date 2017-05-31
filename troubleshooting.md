@@ -8,25 +8,9 @@ repository](https://github.com/puppetlabs/puppet-quest-guide/blob/master/trouble
 
 ### I completed a task, but the quest tool doesn't show it as complete
 
-The quest tool uses a series of [Serverspec](http://serverspec.org/) tests for
-each quest to track task progress. Certain tasks simply check your bash history
-for an entered command, so it's possible that you entered a valid alternate
-version of the command that simply wasn't recognized by the check.
-
-It is also possible that we have written the test for a task in a way that is
-too restrictive and doesn't correctly capture a valid syntactical variation in
-your Puppet code or another relevant file. You can check the specific matchers
-by looking at a quest's spec file in the `/usr/src/puppet-quest-guide/tests`
-directory. If you find an issue here, please let us know by sending an email to
-learningvm@puppetlabs.com.
-
-If you're willing to do a little archaeology, you can find the tests we use to
-validate that quests can be completed in the
-`/usr/src/puppet-quest-guide/tests/test_tests` directory. These aren't written
-for legibility and use alternate methods such as `sed` and the PE API to
-complete tasks, but they might offer some inspiration if you're stuck on a
-task. (Note that the test script for the Application Orchestrator quest is
-currently incomplete.)
+You can check the specific matchers by looking at a quest's spec file in the
+`/usr/src/puppet-quest-guide/tests` directory. If you find an issue with the
+tests, please let us know by sending an email to learningvm@puppetlabs.com.
 
 ### Password Required for the Quest Guide
 
@@ -38,41 +22,54 @@ the Power of Puppet quest: **admin/puppetlabs**)
 
 ### I can't find the VM password
 
-The password to log in to the VM is generated randomly and will be displayed on
+The Learning VM's password is generated randomly and will be displayed on
 the splash page displayed on the terminal of your virtualization software when
 you start the VM.
 
 If you are already logged in via your virtualization software's terminal, you
 can use the following command to view the password: `cat /var/local/password`.
 
-If the password is not displayed on the splash page on startup, it is possible
-that some error occured during the startup process. Restarting the VM should
-regenerate this page with a valid password.
+Occasionally, the splash page will not be displayed on the web interface
+console. This can generally be resolved by refreshing the page.
 
 ### Does the Learning VM work on vSphere, ESXi, etc.?
 
-Possibly, but we don't currently have the resources to test or support the
-Learning VM on these platforms.
+While the VM should be compatible with these platforms, we don't test or
+support the VM in this context.
 
 ### I cannot connect to the PE console
 
+To connect to the PE console, you must use `https` rather than `http`.
+
+The console uses a self-signed certificate, which means that most browsers will
+show a security warning. To bypass this warning, you may have to click the
+*advanced* link displayed on the warning page.
+
 It may take some time after the VM is started before all the Puppet services
-are fully started. If you recently started or restarted the VM, or restarted
-any services in the PE stack, please wait a few minutes before you try to
-access the PE console.
+are fully started. If you attempt to connect to the console before the service
+is started, you will see a 503 error. If you recently started or restarted the
+VM, or restarted any services in the PE stack, please wait a few minutes before
+you try to access the PE console. See the section on PE services below.
+
+### One of the PE services hasn't started or has crashed
 
 Because the Learning VM's puppet services are configured to run in an
-environment with restricted resources, they are more prone to crashes than a
-production PE installation.
+environment with restricted resources, they may have a longer restart time and
+may be less stable than is typical of a production installation.
+
+On restarting the VM, it may take several minutes for the PE services to fully
+start. If you have restarted the VM and immediately try to connect to the PE
+console or trigger a Puppet agent run, you may encounter errors until these
+services have had time to fully start.
 
 You can check the status of puppet services with the following command:
 
     systemctl --all | grep pe-
 
-If you notice any stopped puppet-related services (e.g. pe-console-services),
-double check that you have sufficient memory allocated to the VM and available
-on your host, then use the following script to restart these services in the
-correct order:
+If still observe stopped puppet-related services (e.g. pe-console-services)
+several minutes after the VM has started, double check that you have sufficient
+memory allocated to the VM and available on your host, then use the following
+script to restart these services in the correct order:
 
     /usr/local/bin/restart_classroom_services.rb all -f
 
@@ -87,18 +84,8 @@ There are several common reasons for a Puppet run to fail.
 
 If a syntax error is indicated, please correct the specified file. Note that
 due to the way syntax is parsed, an error may not always be on the line
-indicated. If you can't locate an error on the line indicated in the error
-message, check preceeding lines for missing commas or unmatched delimiters such
-as parentheses, brackets, or quotation marks.
-
-If you get an error along the lines of `Error 400 on SERVER: Unknown function
-union...` it is likely because the `puppetlabs-stdlib` module has not been
-installed. This module is a dependency for many modules, and provides a set of
-common functions. If you are running the Learning VM offline, you cannot rely
-on the Puppet Forge's dependency resolution. We have this module and all other
-modules required for the Learning VM cached, with instructions to install them
-in the Power of Puppet quest. If that installation fails, you may try adding
-the `--force` flag after the `--ignore-dependencies` flag.
+indicated. For example, a missing comma, bracket, or parenthesis will likely
+cause a syntax error on a later line.
 
 If you see an issue including `connect(2) for "learning.puppetlabs.vm" port
 8140` this generally indicates that the `pe-puppetserver` service is down. See
@@ -109,7 +96,7 @@ learning.puppetlabs.vm:8140` generally indicates that the `pe-puppetdb` service
 is down. Again, refer to the section above for instructions on checking and
 restarting PE services.
 
-### I can't import the OVA
+### I cannot import the OVA
 
 Ensure that you have an up-to-date version of your virtualization software
 installed.  Note that the "check for updates" feature of VirtualBox may not
