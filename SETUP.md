@@ -18,7 +18,7 @@ page. On Windows systems, you will need to download and use a tool such as the
 Get an up-to-date version of your virtualization software. We suggest using
 either VirtualBox or a VMware application appropriate for your platform.
 [VirtualBox](https://www.virtualbox.org/wiki/Downloads) is free and available
-for Linux, OS X, and Windows. VMware has several desktop virtualization
+for Linux, Mac, and Windows systems. VMware has several desktop virtualization
 applications, including [VMware
 Fusion](https://www.vmware.com/products/fusion/) for Mac and [VMware
 Workstation](https://www.vmware.com/products/workstation/) for Windows.
