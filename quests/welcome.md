@@ -4,7 +4,6 @@
 
 ## Quest objectives
 
-- Learn about the value of Puppet and Puppet Enterprise
 - Familiarize yourself with the Quest structure and tool
 
 ## Getting Started
@@ -13,9 +12,9 @@ Welcome to the Quest Guide for the Puppet Learning VM. This guide will be
 your companion as you make your way through the Learning VM's series of
 interactive lessons.
 
-At this point, you should have the Learning VM set up and an open SSH session
-from your terminal or SSH client. If not, please return to the Setup section
-for instructions on getting started..
+At this point, you should have the Learning VM set up and an open session in
+your browser-based terminal or SSH client. If not, please return to the Setup
+section for instructions on getting started.
 
 Before we get into Puppet itself, this lesson provides with a brief
 introduction to the `quest` tool that you will use throughout the rest of this
