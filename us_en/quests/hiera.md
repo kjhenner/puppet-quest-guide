@@ -68,8 +68,8 @@ your Cowsay as a Service application. Your basic tier offers only basic cowsay
 API features, while your your premium level customers get the added database
 features. The hot new startup Beauvine is paying for the basic service, while
 their competitor, the more established Auroch has opts for your premium
-service. Auroch also insists that you set up also set up a custom one-off
-instance the application using cowsay's dragon character as the default.
+service. Auroch also insists that you also set up a custom one-off
+instance of the application using cowsay's dragon character as the default.
 
 Your goal is too create a Hiera configuration that will provide parameter
 values to configure your Pasture application servers at the global, per-domain,
@@ -82,12 +82,12 @@ file to your environment's code directory. This configuration file defines the
 levels in your hierarchy and tells Hiera where to find the data source that
 corresponds to each level.
 
-First, make sure you're working the the production environment's code
+First, make sure you're working in the production environment's code
 directory:
 
     cd /etc/puppetlabs/code/environments/production
 
-Start work on a new `hiera.yaml` file.
+Start work on the `hiera.yaml` file.
 
     vim hiera.yaml
 
@@ -154,17 +154,17 @@ for each of the `pasture` component class parameters you want to manage.
 ```puppet
 class profile::pasture::app {
   class { 'pasture':
-    default_message   => lookup(profile::pasture::app::default_message)
-    sinatra_server    => lookup(profile::pasture::app::sinatra_server)
-    default_character => lookup(profile::pasture::app::default_character)
-    db                => lookup(profile::pasture::app::db)
+    default_message   => lookup('profile::pasture::app::default_message'),
+    sinatra_server    => lookup('profile::pasture::app::sinatra_server'),
+    default_character => lookup('profile::pasture::app::default_character'),
+    db                => lookup('profile::pasture::app::db'),
   }
 }
 ```
 
 Note that these lookup keys include a fully qualified scope. Though Hiera
-itself doesn't require this naming pattern these keys, this pattern allows
-anyone looking at a key in a data source know exactly how and where it
+itself doesn't require this naming pattern for these keys, this pattern allows
+anyone looking at a key in a data source to know exactly how and where it
 is used in Puppet code.
 
 (Hiera also has an implicit data binding feature which makes direct use of
@@ -174,7 +174,7 @@ data less clear, however, the `lookup()` function is preferred, especially when
 members of your team are less familiar with Hiera.)
 
 Now that you've added lookup functions to your profile, it's time to define
-these data in your Hiera data sources.
+the data in your Hiera data sources.
 
 Hiera is very flexible in the kinds of data sources it can use. The two most
 common plain-text formats for Hiera data sources are YAML and JSON, but it can
